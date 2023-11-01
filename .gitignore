@@ -1,0 +1,6 @@
+/.idea/workspace.xml
+.DS_Store
+*-debug.log
+*-error.log
+/vendor
+/node_modules
