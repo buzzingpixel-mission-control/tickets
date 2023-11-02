@@ -5,6 +5,7 @@ import TicketsPage from './Tickets/Page';
 const TicketsRoutes = () => (
     <>
         <Route path="/tickets" element={<TicketsPage />} />
+        <Route path="/tickets/page/:pageNum" element={<TicketsPage />} />
     </>
 );
 

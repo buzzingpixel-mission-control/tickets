@@ -1,7 +1,5 @@
 import { MenuItem } from 'buzzingpixel-mission-control-frontend-core';
-import {
-    TicketIcon,
-} from '@heroicons/react/24/outline';
+import { TicketIcon } from '@heroicons/react/24/outline';
 
 const TicketsMenuItems = (): Array<MenuItem> => [
     {
