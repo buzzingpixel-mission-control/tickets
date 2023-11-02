@@ -28,10 +28,12 @@ class TicketsTable
             ->addColumn(
                 'created_by_user_id',
                 PostgresAdapter::PHINX_TYPE_UUID,
+                ['null' => true],
             )
             ->addColumn(
                 'assigned_to_user_id',
                 PostgresAdapter::PHINX_TYPE_UUID,
+                ['null' => true],
             )
             ->addColumn(
                 'title',

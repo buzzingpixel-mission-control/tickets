@@ -23,9 +23,9 @@ class TicketRecord extends Record
     /** Primary key */
     public string $id = '';
 
-    public string $created_by_user_id = '';
+    public string|null $created_by_user_id = null;
 
-    public string $assigned_to_user_id = '';
+    public string|null $assigned_to_user_id = null;
 
     public string $title = '';
 
@@ -33,7 +33,7 @@ class TicketRecord extends Record
 
     public string $status = '';
 
-    public string $watchers = '';
+    public string $watchers = '[]';
 
     public string $added_at = '';
 }
