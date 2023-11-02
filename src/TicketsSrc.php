@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MissionControlTickets;
 
-class MissionControlSrc
+class TicketsSrc
 {
     public static function path(): string
     {

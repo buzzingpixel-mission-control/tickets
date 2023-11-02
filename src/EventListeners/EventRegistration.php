@@ -10,5 +10,9 @@ class EventRegistration
 {
     public static function register(OrderedProviderInterface $provider): void
     {
+        $provider->addSubscriber(
+            Migrations::class,
+            Migrations::class,
+        );
     }
 }
