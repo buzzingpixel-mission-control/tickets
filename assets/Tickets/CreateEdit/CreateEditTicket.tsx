@@ -8,6 +8,7 @@ import LineItem from './LineItem';
 import FormInputText from './FormInputText';
 import FormInputAssignedTo from './FormInputAssignedTo';
 import FormInputAdditionalWatchers from './FormInputAdditionalWatchers';
+import FormInputMarkdown from './FormInputMarkdown';
 
 const CreateEditTicket = (
     {
@@ -22,6 +23,7 @@ const CreateEditTicket = (
         title: '',
         assigned_to: '',
         additional_watchers: [],
+        content: '',
     };
 
     const [isSaving, setIsSaving] = useState<boolean>(false);
@@ -29,7 +31,7 @@ const CreateEditTicket = (
     const [values, setValues] = useState<CreateEditValues>(incomingValues);
 
     const setStringValue = (
-        key: 'title' | 'assigned_to',
+        key: 'title' | 'assigned_to' | 'content',
         val: string,
     ) => {
         const newValues = values;
@@ -61,6 +63,8 @@ const CreateEditTicket = (
             setErrorMessage('');
         }
     };
+
+    console.log(values);
 
     return (
         <>
@@ -130,6 +134,19 @@ const CreateEditTicket = (
                                         value={values.title}
                                         setValue={(val: string) => {
                                             setStringValue('title', val);
+                                        }}
+                                    />
+                                )}
+                            />
+                            <LineItem
+                                label="Content"
+                                labelFor="content"
+                                RenderInput={(
+                                    <FormInputMarkdown
+                                        name="title"
+                                        value={values.content}
+                                        setValue={(val: string) => {
+                                            setStringValue('content', val);
                                         }}
                                     />
                                 )}

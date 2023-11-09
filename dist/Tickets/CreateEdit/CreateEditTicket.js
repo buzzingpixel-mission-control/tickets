@@ -46,12 +46,14 @@ var LineItem_1 = __importDefault(require("./LineItem"));
 var FormInputText_1 = __importDefault(require("./FormInputText"));
 var FormInputAssignedTo_1 = __importDefault(require("./FormInputAssignedTo"));
 var FormInputAdditionalWatchers_1 = __importDefault(require("./FormInputAdditionalWatchers"));
+var FormInputMarkdown_1 = __importDefault(require("./FormInputMarkdown"));
 var CreateEditTicket = function (_a) {
     var pageTitle = _a.pageTitle, incomingValues = _a.incomingValues;
     incomingValues = incomingValues !== null && incomingValues !== void 0 ? incomingValues : {
         title: '',
         assigned_to: '',
         additional_watchers: [],
+        content: '',
     };
     var _b = (0, react_1.useState)(false), isSaving = _b[0], setIsSaving = _b[1];
     var _c = (0, react_1.useState)(incomingValues), values = _c[0], setValues = _c[1];
@@ -73,6 +75,7 @@ var CreateEditTicket = function (_a) {
             setErrorMessage('');
         }
     };
+    console.log(values);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         (0, buzzingpixel_mission_control_frontend_core_1.createPortal)(react_1.default.createElement(ErrorModal_1.default, { isOpen: errorMessageIsOpen, setIsOpen: setErrorMessageIsOpen, message: errorMessage })),
         react_1.default.createElement("form", { onSubmit: function (e) {
@@ -96,6 +99,9 @@ var CreateEditTicket = function (_a) {
                                 } })) }),
                         react_1.default.createElement(LineItem_1.default, { label: "Title", labelFor: "title", RenderInput: (react_1.default.createElement(FormInputText_1.default, { name: "title", useMaxWidth: false, value: values.title, setValue: function (val) {
                                     setStringValue('title', val);
+                                } })) }),
+                        react_1.default.createElement(LineItem_1.default, { label: "Content", labelFor: "content", RenderInput: (react_1.default.createElement(FormInputMarkdown_1.default, { name: "title", value: values.content, setValue: function (val) {
+                                    setStringValue('content', val);
                                 } })) }),
                         react_1.default.createElement("div", { className: "px-4 py-6 sm:px-6" },
                             react_1.default.createElement("div", { className: "text-right align-middle" },
