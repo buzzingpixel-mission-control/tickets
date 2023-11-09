@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-    useBreadcrumbs, useHidePageTitle,
+    useBreadcrumbs,
+    useHidePageTitle,
     usePageTitle,
 } from 'buzzingpixel-mission-control-frontend-core';
 import PageHeader from './PageHeader';
