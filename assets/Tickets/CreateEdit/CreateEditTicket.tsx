@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createPortal } from 'buzzingpixel-mission-control-frontend-core';
+import { UseMutationResult } from '@tanstack/react-query/src/types';
 import { CreateEditValues } from './CreateEditValues';
 import ErrorModal from './ErrorModal';
 import ShowLastErrorButton from './ShowLastErrorButton';
@@ -14,9 +15,14 @@ const CreateEditTicket = (
     {
         pageTitle,
         incomingValues,
+        mutation,
+        onSaveSuccess,
     }: {
         pageTitle: string;
         incomingValues?: CreateEditValues | undefined;
+        mutation: UseMutationResult;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        onSaveSuccess: (jsonResponse: any) => void;
     },
 ) => {
     incomingValues = incomingValues ?? {
@@ -62,9 +68,20 @@ const CreateEditTicket = (
         if (errorMessage) {
             setErrorMessage('');
         }
-    };
 
-    console.log(values);
+        mutation.mutate(values, {
+            onSuccess: onSaveSuccess,
+            onError: (error) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                setErrorMessage(error.message || 'Unable to add Ticket');
+
+                setErrorMessageIsOpen(true);
+
+                setIsSaving(false);
+            },
+        });
+    };
 
     return (
         <>

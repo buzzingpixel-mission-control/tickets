@@ -48,7 +48,7 @@ var FormInputAssignedTo_1 = __importDefault(require("./FormInputAssignedTo"));
 var FormInputAdditionalWatchers_1 = __importDefault(require("./FormInputAdditionalWatchers"));
 var FormInputMarkdown_1 = __importDefault(require("./FormInputMarkdown"));
 var CreateEditTicket = function (_a) {
-    var pageTitle = _a.pageTitle, incomingValues = _a.incomingValues;
+    var pageTitle = _a.pageTitle, incomingValues = _a.incomingValues, mutation = _a.mutation, onSaveSuccess = _a.onSaveSuccess;
     incomingValues = incomingValues !== null && incomingValues !== void 0 ? incomingValues : {
         title: '',
         assigned_to: '',
@@ -74,8 +74,17 @@ var CreateEditTicket = function (_a) {
         if (errorMessage) {
             setErrorMessage('');
         }
+        mutation.mutate(values, {
+            onSuccess: onSaveSuccess,
+            onError: function (error) {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                setErrorMessage(error.message || 'Unable to add Ticket');
+                setErrorMessageIsOpen(true);
+                setIsSaving(false);
+            },
+        });
     };
-    console.log(values);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         (0, buzzingpixel_mission_control_frontend_core_1.createPortal)(react_1.default.createElement(ErrorModal_1.default, { isOpen: errorMessageIsOpen, setIsOpen: setErrorMessageIsOpen, message: errorMessage })),
         react_1.default.createElement("form", { onSubmit: function (e) {

@@ -4,10 +4,14 @@ import {
     useHidePageTitle,
     usePageTitle,
 } from 'buzzingpixel-mission-control-frontend-core';
+import { useNavigate } from 'react-router-dom';
 import CreateEditTicket from './CreateEditTicket';
+import { useAddTicketMutation } from '../TicketData';
 
 const PageCreate = () => {
     const pageTitle = 'Create Ticket';
+
+    const navigate = useNavigate();
 
     useHidePageTitle(true);
 
@@ -25,7 +29,11 @@ const PageCreate = () => {
     ]);
 
     return (
-        <CreateEditTicket pageTitle={pageTitle} />
+        <CreateEditTicket
+            pageTitle={pageTitle}
+            mutation={useAddTicketMutation()}
+            onSaveSuccess={() => { navigate('/tickets'); }}
+        />
     );
 };
 
