@@ -35,6 +35,7 @@ class CreatePostedData
         return new PostedData(
             AssignedTo::fromNative($assignedTo),
             new AdditionalWatchers(array_map(
+                /** @phpstan-ignore-next-line */
                 static fn (string $watcherId) => Watcher::fromNative(
                     $watcherId,
                 ),

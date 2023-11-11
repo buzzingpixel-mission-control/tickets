@@ -1,8 +1,17 @@
 import {
     useApiMutation,
-    RequestMethod,
+    RequestMethod, useApiQueryWithSignInRedirect,
 } from 'buzzingpixel-mission-control-frontend-core';
 import { CreateEditValues } from './CreateEdit/CreateEditValues';
+
+// export const useTicketData = (
+//     status: string,
+//     filter: string;
+// ) => {
+//     const uri = '/tickets';
+//
+//     return useApiQueryWithSignInRedirect();
+// };
 
 export const useAddTicketMutation = () => useApiMutation<unknown, CreateEditValues>({
     invalidateQueryKeysOnSuccess: ['/tickets'],

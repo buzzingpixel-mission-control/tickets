@@ -23,9 +23,9 @@ class TicketRecord extends Record
     /** Primary key */
     public string $id = '';
 
-    public string|null $created_by_user_id = null;
+    public string $created_by_user_id = '';
 
-    public string|null $assigned_to_user_id = null;
+    public string $assigned_to_user_id = '';
 
     public string $title = '';
 
